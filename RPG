@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script language="JavaScript">
+
+ // Charactor Position
+ var ChX = 8;
+ var ChY = 3;
+ var ChP = 1;
+ var Map = 1;
+
+ // Charactor Stats
+ var ChHp = 100;
+ var ChMp = 50;
+ var ChMxHp = 100;
+ var ChMxMp = 50;
+
+ // Map
+ var BaseMap = [
+	[1,1,5,1,5,1,5,1,1,1],
+	[1,0,0,0,0,0,0,0,0,1],
+	[1,0,0,0,0,0,0,0,0,1],
+	[1,0,0,0,0,0,0,0,0,1],
+	[1,8,0,0,0,0,0,0,0,1],
+	[1,0,0,0,0,0,0,0,0,1],
+	[1,0,0,0,0,0,0,12,0,1],
+	[1,0,0,0,0,0,0,0,0,1],
+	[1,0,0,0,0,0,0,0,0,1],
+	[1,1,1,1,1,1,1,1,1,1]
+ ];
+
+ // KeyDown
+ window.addEventListener(`keydown`, function(event) {
+
+  // Up
+  if(event.keyCode == 38) {
+   ChP = 1;
+   if(BaseMap[ChX-1][ChY] == 0) {
+    ChX = ChX - 1; } 
+  }
+
+  // Down
+  else if(event.keyCode == 40) {
+   ChP = 2;
+   if(BaseMap[ChX+1][ChY] == 0) {
+    ChX = ChX + 1; }
+  }
+
+  // Left
+  else if(event.keyCode == 37) {
+   ChP = 3;
+   if(BaseMap[ChX][ChY-1] == 0) {
+    ChY = ChY - 1; }
+  }
+
+  // Right
+  else if(event.keyCode == 39) {
+   ChP = 4;
+   if(BaseMap[ChX][ChY+1] == 0) {
+    ChY = ChY + 1; }
+  }
+
+  // Space
+  else if(event.keyCode == 32) {
+   space(ChX,ChY);
+  }
+  console.log(ChX);
+  console.log(ChY);
+  console.log(ChP);
+
+ });
+
+ // Space Function
+ function space(x,y) {
+  switch(ChP) {
+   case 1 :
+    if(BaseMap[x-1][y] == 8) {
+     alert("OK"); }
+    else if(BaseMap[x-1][y] >= 10) {
+     alert("NO"); }
+   break;
+
+   case 2 :
+    if(BaseMap[x+1][y] == 8) {
+     alert("OK"); }
+    else if(BaseMap[x+1][y] >= 10) {
+     alert("NO"); }
+   break;
+   
+   case 3 :
+    if(BaseMap[x][y-1] == 8) {
+     alert("OK"); }
+    else if(BaseMap[x][y-1] >= 10) {
+     alert("NO"); }
+   break;
+
+   case 4 :
+    if(BaseMap[x][y+1] == 8) {
+     alert("OK"); }
+    else if(BaseMap[x][y+1] >= 10) {
+     alert("NO"); }
+   break;
+  }
+ }
+
+</script>
+
+</head>
+
+<body onkeydown=`keydown()`>
+<h2> Base </h2>
+<br>
+<br>
+<br>---------------------------------------------------
+<br><script> document.write("Hp : " + ChHp + " / " + ChMxHp); </script>
+<br><script> document.write("Mp : " + ChMp + " / " + ChMxMp); </script> 
+
+</body>
+</html>
