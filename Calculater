@@ -1,0 +1,112 @@
+<html>
+
+<head>
+<script language="JavaScript">
+
+ var a, b, c, d, s, t, r, v, w, z;
+ 
+ function input() {
+  // input
+  s = document.getElementById("inputw").value;
+  t = document.getElementById("inputp").value;  
+  r = document.getElementById("inputr").value;
+
+  a = document.getElementById("input1").value;
+  b = document.getElementById("input2").value;
+  w = document.getElementById("input3").value;
+
+  v = 1 - (2 * (parseInt(b) * Math.cos(parseInt(a) * Math.PI/180) / (2 * parseInt(w))) * (parseInt(b) * Math.cos(parseInt(a) * Math.PI/180) / (2 * parseInt(w))));
+  // v = Math.sin(parseInt(b) * Math.PI/180 / 2) / Math.sin(parseInt(a) * Math.PI/180 / 2);
+  document.getElementById("resultv").innerText = v;
+  z = 1 - (2 * (parseInt(b) * Math.sin(parseInt(a) * Math.PI/180) / (2 * parseInt(w))) * (parseInt(b) * Math.sin(parseInt(a) * Math.PI/180) / (2 * parseInt(w))));
+  // z = Math.cos(parseInt(a) * Math.PI/180) + Math.cos(parseInt(b) * Math.PI/180) - 1;
+  resultz.innerHTML = z;
+
+ // Find Cos a's degree
+
+  if(v>(Math.cos(0 * Math.PI/180) + Math.cos(0.1 * Math.PI/180))/2) { c=0; }
+  for(var i=0.1; i<=180; i=i+0.1) {
+   if((Math.tan((i-0.1) * Math.PI/180) + Math.tan(i * Math.PI/180))/2 <= v &&
+      (Math.tan((i+0.1) * Math.PI/180) + Math.tan(i * Math.PI/180))/2 > v) {
+    c = i;
+    c = c.toFixed(1);
+
+  if(a<0) { c = -c; } 
+   
+    }
+   }
+  if(a==0) { c = 0; }
+  resultc.innerHTML = c;  // Output P
+
+ // Find Cos b's degree
+ 
+  if(z>(Math.cos(0 * Math.PI/180) + Math.cos(0.1 * Math.PI/180))/2) { d=0; }
+  for(var k=0.1; k<=180; k=k+0.1) {
+   if((Math.cos((k-0.1) * Math.PI/180) + Math.cos(k * Math.PI/180))/2 >= z &&
+      (Math.cos((k+0.1) * Math.PI/180) + Math.cos(k * Math.PI/180))/2 < z) {
+    d = k;
+    d = d.toFixed(1);  
+
+    }
+   }
+
+  resultd.innerHTML = d;  // Output R
+ 
+ // Changed w
+  s = parseFloat(s);
+  Number(d);
+  s = s - d;
+  s = s.toFixed(1);
+  results.innerHTML = s;
+
+ // Changed p
+  t = parseFloat(t);
+  t = t.toFixed(1);
+  resultt.innerHTML = Number(t) + Number(c);
+
+ // Changed r
+  r = parseFloat(r);
+  r = r.toFixed(1);
+  resultr.innerHTML = Number(r) + Number(d);
+
+ }
+
+</script>
+
+</head>
+
+<body>
+<h2> wpr Calculator </h2>
+<br>
+Current w : <input type="text" id="inputw">
+<br><br>
+Current p : <input type="text" id="inputp">
+<br><br>
+Current r : <input type="text" id="inputr">
+<br><br>
+Tool distance (mm) : <input type="text" id="input3">
+<br><br>
+To move degree (-180~180) : <input type="text" id="input1">
+<br><br>
+To move distance (mm) : <input type="text" id="input2">
+<br><br>
+<input type="button" value="Calculation" onclick="input()">
+<br>
+<br>------------Reference-----------<br>
+Cos d1 : <span id="resultv"></span>
+<br>
+Cos d2 : <span id="resultz"></span>
+<br>
+Require P : <span id="resultc"></span> Radian
+<br>
+Require R : <span id="resultd"></span> Radian
+<br>-------------Result--------------<br>
+Changed w : <span id="results"></span>
+<br>
+Changed p : <span id="resultt"></span>
+<br>
+Changed r : <span id="resultr"></span>
+<br>---------------------------------<br>
+
+</body>
+</html>
