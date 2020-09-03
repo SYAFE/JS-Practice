@@ -112,7 +112,7 @@
 <h2> Base </h2>
 <br>
 <br>
-<br>---------------------------------------------------
+<br>----------------------------------------------------
 <br><script> document.write("Hp : " + ChHp + " / " + ChMxHp); </script>
 <br><script> document.write("Mp : " + ChMp + " / " + ChMxMp); </script> 
 
