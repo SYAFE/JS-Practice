@@ -2,7 +2,6 @@
 <html>
 <head>
 <script language="JavaScript">
-
  // Charactor Position
  var ChX = 8;
  var ChY = 3;
